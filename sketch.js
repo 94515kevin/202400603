@@ -10,7 +10,7 @@ let poses = [];
 
 function preload(){
 	//mountainImg = loadImage("image211217.jpg")
-	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif")
+	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");
 	//noiseImg =loadImage("noise1.jpg")
 }
 
