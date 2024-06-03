@@ -9,10 +9,7 @@ let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
 function preload(){
-	//mountainImg = loadImage("image211217.jpg")
-	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");
-	//noiseImg =loadImage("noise1.jpg")
-}
+	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");}
 
 async function init() {
   const detectorConfig = {
@@ -64,10 +61,10 @@ function drawSkeleton() {
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
+    partA = pose.keypoints[1];
+    partB = pose.keypoints[2];
     // shoulder to wrist
       if (partA.score> 0.1 ) {
-        partA = pose.keypoints[1];
-        partB = pose.keypoints[2];
         image(horseImg,partA.x-25,partL.y-25,50,50);
       }
     
