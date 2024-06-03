@@ -4,7 +4,7 @@ MoveNet is developed by TensorFlow:
 https://www.tensorflow.org/hub/tutorials/movenet
 */
 
-let video, pose, partL, partR, detector;
+let video, bodypose, pose, keypoint, detector;
 let poses = [];
 let horseImg;
 
