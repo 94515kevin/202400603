@@ -66,11 +66,11 @@ function drawSkeleton() {
     partR = pose.keypoints[2]; // 右肩
     // 肩膀到腕部
     if (partL.score > 0.1) {
-      image(horseImg, partL.x - 25, partL.y - 25, 50, 50);
+      image(horseImg, partL.x - 25, partL.y - 25, 50, 50)
     }
     // 肩膀到肩膀
     if (partR.score > 0.1) {
-      image(horseImg, partR.x - 25, partR.y - 25, 50, 50);
+      image(horseImg, partR.x - 25, partR.y - 25, 50, 50)
     }
   }
 }
