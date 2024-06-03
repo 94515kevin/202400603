@@ -64,12 +64,12 @@ function drawSkeleton() {
     partL = pose.keypoints[1];
     partR = pose.keypoints[2];
     // shoulder to wrist
-      if (partA.score> 0.1 ) {
+      if (partL.score> 0.1 ) {
         image(horseImg,partL.x-25,partL.y-25,50,50);
       }
     
     // shoulder to shoulder
-    if (partB.score > 0.1) {
+    if (partR.score > 0.1) {
       image(horseImg,partR.x-25,partR.y-25,50,50);
       
     }
