@@ -8,6 +8,12 @@ https://www.tensorflow.org/hub/tutorials/movenet
 let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
+function preload(){
+	//mountainImg = loadImage("image211217.jpg")
+	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif")
+	//noiseImg =loadImage("noise1.jpg")
+}
+
 async function init() {
   const detectorConfig = {
     modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -59,52 +65,21 @@ function drawSkeleton() {
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
     // shoulder to wrist
-    for (j = 5; j < 9; j++) {
-      if (pose.keypoints[j].score > 0.1 && pose.keypoints[j + 2].score > 0.1) {
-        partA = pose.keypoints[j];
-        partB = pose.keypoints[j + 2];
-        line(partA.x, partA.y, partB.x, partB.y);
+      if (partA.score> 0.1 ) {
+        partA = pose.keypoints[1];
+        partB = pose.keypoints[2];
+        image(horseImg,partA.x-25,partL.y-25,50,50);
       }
-    }
+    
     // shoulder to shoulder
-    partA = pose.keypoints[5];
-    partB = pose.keypoints[6];
-    if (partA.score > 0.1 && partB.score > 0.1) {
-      line(partA.x, partA.y, partB.x, partB.y);
+    if (partB.score > 0.1) {
+      image(horseImg,partB.x-25,partB.y-25,50,50);
       
     }
-    // hip to hip
-    partA = pose.keypoints[11];
-    partB = pose.keypoints[12];
-    if (partA.score > 0.1 && partB.score > 0.1) {
-      line(partA.x, partA.y, partB.x, partB.y);
-      
-    }
-    // shoulders to hips
-    partA = pose.keypoints[5];
-    partB = pose.keypoints[11];
-    if (partA.score > 0.1 && partB.score > 0.1) {
-      line(partA.x, partA.y, partB.x, partB.y);
-      
-    }
-    partA = pose.keypoints[6];
-    partB = pose.keypoints[12];
-    if (partA.score > 0.1 && partB.score > 0.1) {
-      line(partA.x, partA.y, partB.x, partB.y);
-      
-    }
-    // hip to foot
-    for (j = 11; j < 15; j++) {
-      if (pose.keypoints[j].score > 0.1 && pose.keypoints[j + 2].score > 0.1) {
-        partA = pose.keypoints[j];
-        partB = pose.keypoints[j + 2];
-        line(partA.x, partA.y, partB.x, partB.y);
-        
-      }
-    }
+    
   }
-}
 
+}
 /* Points (view on left of screen = left part - when mirrored)
   0 nose
   1 left eye
