@@ -7,6 +7,7 @@ https://www.tensorflow.org/hub/tutorials/movenet
 
 let video, bodypose, pose, keypoint, detector;
 let poses = [];
+let horseImg;
 
 function preload(){
 	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");}
