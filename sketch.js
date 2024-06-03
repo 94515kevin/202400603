@@ -61,16 +61,16 @@ function drawSkeleton() {
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
-    partA = pose.keypoints[1];
-    partB = pose.keypoints[2];
+    partL = pose.keypoints[1];
+    partR = pose.keypoints[2];
     // shoulder to wrist
       if (partA.score> 0.1 ) {
-        image(horseImg,partA.x-25,partL.y-25,50,50);
+        image(horseImg,partL.x-25,partL.y-25,50,50);
       }
     
     // shoulder to shoulder
     if (partB.score > 0.1) {
-      image(horseImg,partB.x-25,partB.y-25,50,50);
+      image(horseImg,partR.x-25,partR.y-25,50,50);
       
     }
     
