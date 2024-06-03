@@ -2,15 +2,15 @@
 
 MoveNet is developed by TensorFlow:
 https://www.tensorflow.org/hub/tutorials/movenet
-
 */
 
-let video, bodypose, pose, keypoint, detector;
+let video, pose, partL, partR, detector;
 let poses = [];
 let horseImg;
 
 function preload(){
-	horseImg= loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");}
+  horseImg = loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif");
+}
 
 async function init() {
   const detectorConfig = {
@@ -62,22 +62,19 @@ function drawSkeleton() {
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
-    partL = pose.keypoints[1];
-    partR = pose.keypoints[2];
-    // shoulder to wrist
-      if (partL.score> 0.1 ) {
-        image(horseImg,partL.x-25,partL.y-25,50,50);
-      }
-    
-    // shoulder to shoulder
-    if (partR.score > 0.1) {
-      image(horseImg,partR.x-25,partR.y-25,50,50);
-      
+    partL = pose.keypoints[1]; // 左肩
+    partR = pose.keypoints[2]; // 右肩
+    // 肩膀到腕部
+    if (partL.score > 0.1) {
+      image(horseImg, partL.x - 25, partL.y - 25, 50, 50);
     }
-    
+    // 肩膀到肩膀
+    if (partR.score > 0.1) {
+      image(horseImg, partR.x - 25, partR.y - 25, 50, 50);
+    }
   }
-
 }
+
 /* Points (view on left of screen = left part - when mirrored)
   0 nose
   1 left eye
@@ -92,7 +89,7 @@ function drawSkeleton() {
   10 right wrist
   11 left hip
   12 right hip
-  13 left kneee
+  13 left knee
   14 right knee
   15 left foot
   16 right foot
